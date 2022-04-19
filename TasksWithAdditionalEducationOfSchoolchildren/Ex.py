@@ -42,6 +42,24 @@ print(c4)
 
 
 
+def kill(n):
+    for b in "13579":
+        n = n.replace(b, "")
+    return n
+n = kill(input())
+r = []
+while True:
+    s = input()
+    if s =='':
+        break
+    if kill(s) == n:
+        r.append(int(s))
+print(*sorted(r))
+
+
+
+
+
 #Делфтский яблокоед всегда радуется, когда съедаемое им яблоко больше,
 # чем то яблоко, которое он съел перед этим.
 #У вас есть N яблок. Известен вес каждого Vi, i=1..N.
@@ -66,6 +84,24 @@ print(count)
 
 
 
+from collections import Counter
+n = int(input())
+y = list(map(int, input().split()))
+d = Counter(y)
+r = len(d) - 1
+for j in range(2, n+1):
+    c = 0
+    for q in d:
+        if d[q]>= j:
+            c +=1
+    if c > 1:
+        r += c - 1
+print(r)
+
+
+
+
+
 
 #В криптоанализе широко применяют частотные таблицы символов в языке.
 #Попробуем построить такую таблицу для введённой строки. Пример вывода - вот.
@@ -73,7 +109,6 @@ print(count)
 
 #Эту задачу можно решить разными способами - годится любой,
 #не слишком громоздкий. Одно из возможных решений использует и словари, и списки, и множество.
-
 
 # со словарем
 a = input()
@@ -86,9 +121,6 @@ for keys,values in d.items():
     print(keys + '  ' + str(*values))
 
 
-    
-    
-    
 # с множеством
 s = input().lower()
 ls = list(set(s))
@@ -100,8 +132,6 @@ for i in range(len(lst)):
     print(str(lst[i][0]) + '      ' + str(lst[i][1]))
 
 
-    
-    
 # со списками
 a = list(input("Введите строку - ").lower())
 res_a = []
@@ -117,10 +147,6 @@ res.sort(key = lambda x:x[1], reverse=True)
 for i in range(len(res)):
     print(str(res[i][0]) + '      ' + str(res[i][1]))
 
-
-    
-    
-    
 
 #Есть строка, каждый игрок "откусывает" часть "сосиски" либо один элемент,
 #либо два, в зависимости как удачно игрок выберет
@@ -168,4 +194,3 @@ if comp == user:
     print("Фигасе - ничья!")
 else:
     print("Комп таки победил. А вы ждали чего-то другого?")
-    
